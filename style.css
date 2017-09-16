@@ -9,7 +9,7 @@ h1 {
   font-family: arial;
   text-align: center;
 }
-.schalter {
-  display: inline-block;
-  margin: 10px 20px 0px 0px;
+.button {
+  width: 20%;
+  height: 10%;
 }

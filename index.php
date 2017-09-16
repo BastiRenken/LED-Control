@@ -9,75 +9,85 @@
   foreach($gpios as $pin){
     shell_exec(sprintf("/usr/local/bin/gpio -g mode %d out", $pin));
   }
+  shell_exec("/usr/local/bin/gpio -g mode 11 out");
+
   if(isset($_GET["off"])){
     foreach($gpios as $pin){
       shell_exec(sprintf("/usr/local/bin/gpio -g write %d 1", $pin));
-      $farbe = "lavender";
+      file_put_contents("farbe.txt", "lavender");
     }
   }
   else if(isset($_GET["white"])){
     foreach($gpios as $pin){
       shell_exec(sprintf("/usr/local/bin/gpio -g write %d 0", $pin));
-      $farbe = "white";
+      file_put_contents("farbe.txt", "lightyellow");
     }
   }
   else if(isset($_GET["green"])){
     shell_exec("/usr/local/bin/gpio -g write 2 0");
     shell_exec("/usr/local/bin/gpio -g write 3 1");
     shell_exec("/usr/local/bin/gpio -g write 4 1");
-    $farbe = "green";
+    file_put_contents("farbe.txt", "limegreen");
   }
   else if(isset($_GET["red"])){
     shell_exec("/usr/local/bin/gpio -g write 2 1");
     shell_exec("/usr/local/bin/gpio -g write 3 0");
     shell_exec("/usr/local/bin/gpio -g write 4 1");
-    $farbe = "red";
+    file_put_contents("farbe.txt", "red");
   }
   else if(isset($_GET["blue"])){
     shell_exec("/usr/local/bin/gpio -g write 2 1");
     shell_exec("/usr/local/bin/gpio -g write 3 1");
     shell_exec("/usr/local/bin/gpio -g write 4 0");
-    $farbe = "blue";
+    file_put_contents("farbe.txt", "blue");
   }
   else if(isset($_GET["yellow"])){
     shell_exec("/usr/local/bin/gpio -g write 2 0");
     shell_exec("/usr/local/bin/gpio -g write 3 0");
     shell_exec("/usr/local/bin/gpio -g write 4 1");
-    $farbe = "yellow";
+    file_put_contents("farbe.txt", "gold");
   }
   else if(isset($_GET["turquoise"])){
     shell_exec("/usr/local/bin/gpio -g write 2 0");
     shell_exec("/usr/local/bin/gpio -g write 3 1");
     shell_exec("/usr/local/bin/gpio -g write 4 0");
-    $farbe = "cyan";
+    file_put_contents("farbe.txt", "cyan");
   }
   else if(isset($_GET["pink"])){
     shell_exec("/usr/local/bin/gpio -g write 2 1");
     shell_exec("/usr/local/bin/gpio -g write 3 0");
     shell_exec("/usr/local/bin/gpio -g write 4 0");
-    $farbe = "deeppink";
+    file_put_contents("farbe.txt", "hotpink");
+  }
+  else if(isset($_GET["buzzer"])){
+    shell_exec("/usr/local/bin/gpio -g write 11 1");
+    sleep(1);
+    shell_exec("/usr/local/bin/gpio -g write 11 0");
   }
   ?>
 </head>
+<?php $farbe = file_get_contents("farbe.txt"); ?>
 <?php echo"<body style=\"background-color:$farbe\">";?>
   <h1>LED Control</h1>
   <div id=menu>
   <form method="get" action="index.php">
-    <input type="submit" value="Aus" name="off">
+    <input class="button" type="submit" value="Aus" name="off">
     <p/>
-    <input type="submit" value="Weiss" name="white">
+    <input class="button" type="submit" value="Weiss" name="white">
     <p/>
-    <input type="submit" value="Rot" name="red">
+    <input class="button" type="submit" value="Rot" name="red">
     <p/>
-    <input type="submit" value="Grün" name="green">
+    <input class="button" type="submit" value="Grün" name="green">
     <p/>
-    <input type="submit" value="Blau" name="blue">
+    <input class="button" type="submit" value="Blau" name="blue">
     <p/>
-    <input type="submit" value="Gelb" name="yellow">
+    <input class="button" type="submit" value="Gelb" name="yellow">
     <p/>
-    <input type="submit" value="Türkis" name="turquoise">
+    <input class="button" type="submit" value="Türkis" name="turquoise">
     <p/>
-    <input type="submit" value="Pink" name="pink">
+    <input class="button" type="submit" value="Pink" name="pink">
+    <p/>
+    <input class="button" type="submit" value="Buzzer" name="buzzer">
   </form>
   </div>
 </body>

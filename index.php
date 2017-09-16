@@ -6,7 +6,7 @@
   <link href="style.css" rel="stylesheet">
   <?php
   $gpios  = array(2, 3, 4);
-  $farbe = "white"
+  $farbe = "white";
   foreach($gpios as $pin){
     shell_exec(sprintf("/usr/local/bin/gpio -g mode %d out", $pin));
   }

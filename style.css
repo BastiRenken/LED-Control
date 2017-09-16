@@ -1,0 +1,15 @@
+h1 {
+  font-size: 50px;
+  font-family: arial;
+  color: black;
+  text-align: center;
+}
+#menu {
+  font-size: 20px;
+  font-family: arial;
+  text-align: center;
+}
+.schalter {
+  display: inline-block;
+  margin: 10px 20px 0px 0px;
+}

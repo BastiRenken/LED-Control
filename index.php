@@ -6,53 +6,60 @@
   <link href="style.css" rel="stylesheet">
   <?php
   $gpios  = array(2, 3, 4);
-  $farbe = "white";
   foreach($gpios as $pin){
     shell_exec(sprintf("/usr/local/bin/gpio -g mode %d out", $pin));
   }
   if(isset($_GET["off"])){
     foreach($gpios as $pin){
       shell_exec(sprintf("/usr/local/bin/gpio -g write %d 1", $pin));
+      $farbe = "lavender";
     }
   }
   else if(isset($_GET["white"])){
     foreach($gpios as $pin){
       shell_exec(sprintf("/usr/local/bin/gpio -g write %d 0", $pin));
+      $farbe = "white";
     }
   }
   else if(isset($_GET["green"])){
     shell_exec("/usr/local/bin/gpio -g write 2 0");
     shell_exec("/usr/local/bin/gpio -g write 3 1");
     shell_exec("/usr/local/bin/gpio -g write 4 1");
+    $farbe = "green";
   }
   else if(isset($_GET["red"])){
     shell_exec("/usr/local/bin/gpio -g write 2 1");
     shell_exec("/usr/local/bin/gpio -g write 3 0");
     shell_exec("/usr/local/bin/gpio -g write 4 1");
+    $farbe = "red";
   }
   else if(isset($_GET["blue"])){
     shell_exec("/usr/local/bin/gpio -g write 2 1");
     shell_exec("/usr/local/bin/gpio -g write 3 1");
     shell_exec("/usr/local/bin/gpio -g write 4 0");
+    $farbe = "blue";
   }
   else if(isset($_GET["yellow"])){
     shell_exec("/usr/local/bin/gpio -g write 2 0");
     shell_exec("/usr/local/bin/gpio -g write 3 0");
     shell_exec("/usr/local/bin/gpio -g write 4 1");
+    $farbe = "yellow";
   }
   else if(isset($_GET["turquoise"])){
     shell_exec("/usr/local/bin/gpio -g write 2 0");
     shell_exec("/usr/local/bin/gpio -g write 3 1");
     shell_exec("/usr/local/bin/gpio -g write 4 0");
+    $farbe = "cyan";
   }
   else if(isset($_GET["pink"])){
     shell_exec("/usr/local/bin/gpio -g write 2 1");
     shell_exec("/usr/local/bin/gpio -g write 3 0");
     shell_exec("/usr/local/bin/gpio -g write 4 0");
+    $farbe = "deeppink";
   }
   ?>
 </head>
-<?php echo"<body style="background-color: $farbe">"?>
+<?php echo"<body style=\"background-color:$farbe\">";?>
   <h1>LED Control</h1>
   <div id=menu>
   <form method="get" action="index.php">

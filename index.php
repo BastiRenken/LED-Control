@@ -64,6 +64,9 @@
     shell_exec("/usr/local/bin/gpio -g write 4 0");
     file_put_contents("farbe.txt", "hotpink");
   }
+  else if(isset($_GET["strobo"])){
+    shell_exec("sudo /usr/bin/python3 /var/www/html/strobo.py &");
+  }
   else if(isset($_GET["wecker"])){
     file_put_contents("wecker.txt", $_GET["zeit"]);
   }
@@ -77,7 +80,7 @@
     }
   }
   else if(isset($_GET["wecker"])){
-    shell_exec("python3 /var/www/html/wecker.py");
+    shell_exec("sudo /usr/bin/python3 /var/www/html/wecker.py");
     echo("Wecker an");
   }
   */
@@ -115,12 +118,14 @@
     <p/> -->
     <input class="button" type="submit" value="Buzzer" name="buzzer">
     <p/>
+    <input class="button" type="submit" value="Strobo" name="strobo">
+    <p/>
   </form>
   <form action="index.php">
     <p>
       Weckzeit:
       <input type="text" name="zeit">
-      <input type="submit" name="wecker"> 
+      <input type="submit" name="wecker">
     </p>
   </form>
   </div>

@@ -9,12 +9,14 @@ GPIO.setup(7, GPIO.OUT) # Blau
 GPIO.setup(5, GPIO.OUT) # Rot
 GPIO.setup(3, GPIO.OUT) # Grün
 
-zeit = time.strftime("%H:%M");
-status = open("wecker.txt", "r")
-status = status.read()
-
-if status != "aus":
-	if zeit == status:
+while True:
+	zeit = time.strftime("%H:%M")
+	status = open("wecker.txt", "r")
+	status_r = status.read()
+	status.close()
+	print(status_r)
+	print(zeit)
+	if zeit == status_r:
 		for i in range(2):
 			GPIO.output(3, GPIO.LOW)
 			time.sleep(0.5)
@@ -56,3 +58,9 @@ if status != "aus":
 		GPIO.output(3, GPIO.LOW)
 		GPIO.output(5, GPIO.LOW)
 		GPIO.output(7, GPIO.LOW)
+		farbe = open("farbe.txt", "r+")
+		farbe.write("lightyellow")
+		farbe.close()
+		time.sleep(40)
+	else:
+		time.sleep(10)

@@ -42,3 +42,5 @@ for d in range(4):
         GPIO.output(5, GPIO.HIGH)
         GPIO.output(7, GPIO.HIGH)
         time.sleep(0.1)
+farbe = open("/var/www/html/farbe.txt", "r+")
+farbe.write("lavender")

@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" name="viewport" content="width=device-width"/>
-  <title>Smart Home</title>
+  <title>LED Control</title>
   <link href="style.css" rel="stylesheet">
   <?php
   $gpios  = array(2, 3, 4);

@@ -20,6 +20,7 @@
     foreach($gpios as $pin){
       shell_exec(sprintf("/usr/local/bin/gpio -g write %d 1", $pin));
       file_put_contents("farbe.txt", "lavender");
+      file_put_contents("status.txt", "0");
     }
   }
   else if(isset($_GET["white"])){
@@ -66,6 +67,9 @@
   }
   else if(isset($_GET["strobo"])){
     shell_exec("sudo /usr/bin/python3 /var/www/html/strobo.py &");
+  }
+  else if(isset($_GET["party"])){
+    shell_exec("sudo /usr/bin/python3 /var/www/html/party.py &");
   }
   else if(isset($_GET["wecker"])){
     file_put_contents("wecker.txt", $_GET["zeit"]);
@@ -120,6 +124,8 @@
     <p/>
     <input class="button" type="submit" value="Strobo" name="strobo">
     <p/>
+    <input class="button" type="submit" value="Party" name="party">
+    <p/>
   </form>
   <form action="index.php">
     <p>
@@ -131,4 +137,3 @@
   </div>
 </body>
 </html>
-

@@ -11,12 +11,12 @@ GPIO.setup(3, GPIO.OUT) # Grün
 
 while True:
 	zeit = time.strftime("%H:%M")
-	status = open("/var/www/html/wecker.txt", "r")
-	status_r = status.read()
-	status.close()
-	print(status_r)
+	weckzeit = open("/var/www/html/wecker.txt", "r")
+	weckzeit_r = weckzeit.read()
+	weckzeit.close()
+	print(weckzeit_r)
 	print(zeit)
-	if zeit == status_r:
+	if zeit == weckzeit_r:
 		for i in range(2):
 			GPIO.output(3, GPIO.LOW)
 			time.sleep(0.5)

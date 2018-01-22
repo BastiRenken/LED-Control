@@ -34,7 +34,6 @@ time.sleep(3)
 '''
 
 open("/var/www/html/status.txt", "r+").write("1")
-
 status = open("/var/www/html/status.txt", "r")
 status_r = status.read()
 status.close()
@@ -45,11 +44,12 @@ while status_r == "1":
     GPIO.output(3, GPIO.LOW)
     GPIO.output(5, GPIO.LOW)
     GPIO.output(7, GPIO.LOW)
-    time.sleep(0.1)
+    time.sleep(0.08)
     GPIO.output(3, GPIO.HIGH)
     GPIO.output(5, GPIO.HIGH)
     GPIO.output(7, GPIO.HIGH)
-    time.sleep(0.1)
+    time.sleep(0.08)
 
 farbe = open("/var/www/html/farbe.txt", "r+")
 farbe.write("lavender")
+status.close()

@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+#Stroboskop
+
 import time
 import RPi.GPIO as GPIO
 

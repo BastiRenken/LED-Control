@@ -66,10 +66,10 @@
     file_put_contents("farbe.txt", "hotpink");
   }
   else if(isset($_GET["strobo"])){
-    shell_exec("sudo /usr/bin/python3 /var/www/html/blinker.py &");
+    shell_exec("sudo /usr/bin/python3 /var/www/html/strobo.py &");
   }
   else if(isset($_GET["party"])){
-    shell_exec("sudo /usr/bin/python3 /var/www/html/strobo.py &");
+    shell_exec("sudo /usr/bin/python3 /var/www/html/farben.py &");
   }
   else if(isset($_GET["wecker"])){
     file_put_contents("wecker.txt", $_GET["zeit"]);
@@ -128,9 +128,8 @@
     <p/>
   </form>
   <form action="index.php">
-    <?php $weckzeit = file_get_contents("wecker.txt"); ?>
     <p>
-    Aktuelle Weckzeit: <?php echo $weckzeit;?> Uhr
+    Aktuelle Weckzeit: <?php echo file_get_contents("wecker.txt");?>
     </p>
     <p>
       Neue Weckzeit:
@@ -141,4 +140,3 @@
   </div>
 </body>
 </html>
-

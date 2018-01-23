@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+#Party
+
 import time
 import RPi.GPIO as GPIO
 
@@ -35,7 +37,6 @@ GPIO.output(5, GPIO.HIGH)
 GPIO.output(7, GPIO.HIGH)
 status.close()
 
-
 '''
     for c in range(2): # Strobo Weiss
         GPIO.output(3, GPIO.LOW)
@@ -47,3 +48,4 @@ status.close()
         GPIO.output(7, GPIO.HIGH)
         time.sleep(0.2)
 '''
+
